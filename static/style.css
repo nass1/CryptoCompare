@@ -5,7 +5,7 @@
 }
 
 .datagrid {
-    font: normal 12px/150% Georgia, Times New Roman, Times, serif;
+    font: normal 12px/150% Times New Roman, Times;
     background: #fff;
     overflow: hidden;
     border: 1px solid #006699;

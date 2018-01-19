@@ -8,11 +8,12 @@
                 <th>rank</th>
                 <th>Name</th>
                 <th>Price in AUD</th>
-                <th>Last 24h volume AUD</th>
-                <th>Market Cap AUD</th>
                 <th>Available Supply</th>
+
                 <th>Total Supply</th>
                 <th>MAX Supply</th>
+                <th>Last 24h volume AUD</th>
+                <th>Market Cap AUD</th>
 
             </tr>
         </thead>
@@ -25,11 +26,11 @@
                 <td>{{key.rank}}</td>
                 <td><img src="https://files.coinmarketcap.com/static/img/coins/32x32/{{key.id}}.png"> {{key.id}} ("{{key.symbol}}")</td>
                 <td>{{key.price_aud}}</td>
-                <td>{{key.24h_volume_aud}}</td>
-                <td>{{key.market_cap_aud}}</td>
-                <td>{{key.available_supply}}</td>
-                <td>{{key.total_supply}}</td>
-                <td>{{key.max_supply}}</td>
+                <td> {{key.numAvailableReadale}} <br> <strong> ({{key.totalSupply}}) </strong> <br> {{key.available_supply}}</td>
+                <td> {{key.totalSupplyReadale}} <br> <strong> ({{key.numAvailable}}) </strong> <br> {{key.total_supply}}</td>
+                <td> Max {{key.maxSupplyReadale}} <br> <strong> ({{key.maxSupply}}) </strong> <br> {{key.max_supply}}</td>
+                <td> {{key.lastHoursReadale}} <br> <strong> ({{key.lastHours}}) </strong> <br> {{key.24h_volume_aud}}</td>
+                <td> {{key.marketCapReadale}}  <br><strong> ({{key.marketCap}}) </strong> <br> {{key.market_cap_aud}}</td>
 
             </tr>
 
