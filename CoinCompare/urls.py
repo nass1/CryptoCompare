@@ -20,5 +20,6 @@ from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name="getJson"),
-    path('viewAll/', views.view_All, name="viewAll"),
+    path('viewLessMillion/', views.viewLessMillion, name="viewLessMillion"),
+    path('viewLesDolar/', views.viewLesDolar, name="viewLesDolar"),
 ]

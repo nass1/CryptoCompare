@@ -24,7 +24,7 @@ class HomePage(TemplateView):
 #next is convert numbers into readable stuff
 def index(request):
 
-    url = "https://api.coinmarketcap.com/v1/ticker/?convert=AUD&limit=20"
+    url = "https://api.coinmarketcap.com/v1/ticker/?convert=AUD&limit=10"
     respo =  requests.get(url)
     print (respo)
     data = json.loads(respo.content.decode('utf-8'))
@@ -41,9 +41,15 @@ def index(request):
         maxSupply = i["max_supply"]
         lastHours = i["24h_volume_aud"]
         marketCap = i["market_cap_aud"]
+        priceAud = i["price_aud"]
+
+        data[count]["priceAud"] = millify(float(priceAud))
+        b = "{:,}".format(float(priceAud))
+        c =  b.split(".")
+        d = c[0] + "."+c[1][:3]
+        data[count]["priceAudReadable"] = d
 
 
-        numAvailable
         data[count]["numAvailable"] = millify(float(numAvailable))
         data[count]["numAvailableReadale"] = "{:,}".format(float(numAvailable))
 
@@ -71,9 +77,32 @@ def index(request):
     return render(request, 'index.html', context)
 
 
-def view_All(request):
-    pass
+def viewLessMillion(request):
 
+    with open('JSONdata.JSON') as json_data:
+        data1 = json.load(json_data)
+        data = []
+        for i in data1:
+            if "Million" in i["numAvailable"]:
+                data.append(i)
+            else:
+                pass
 
+    context = {'data': data}
 
+    return render(request, 'index.html', context)
+
+def viewLesDolar(request):
+    with open('JSONdata.JSON') as json_data:
+        data1 = json.load(json_data)
+        data = []
+        for i in data1:
+            if float(i["price_aud"]) <= 3:
+                data.append(i)
+            else:
+                pass
+
+    context = {'data': data}
+
+    return render(request, 'index.html', context)
 
