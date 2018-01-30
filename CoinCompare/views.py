@@ -24,7 +24,7 @@ class HomePage(TemplateView):
 #next is convert numbers into readable stuff
 def index(request):
 
-    url = "https://api.coinmarketcap.com/v1/ticker/?convert=AUD&limit=50"
+    url = "https://api.coinmarketcap.com/v1/ticker/?convert=AUD&limit=100"
     respo =  requests.get(url)
     print (respo)
     data = json.loads(respo.content.decode('utf-8'))
